@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.caic.dagger2demo.component.DaggerObjectComponent;
+import com.caic.dagger2demo.object.AInterface;
 import com.caic.dagger2demo.object.DObject;
 import com.caic.dagger2demo.object.SingletonObject;
 
@@ -20,6 +21,10 @@ public class SecActivity extends AppCompatActivity {
     @Inject
     DObject mDObject;
 
+    //注入接口实例，不需要关心接口的具体实现
+    @Inject
+    AInterface mAInterface;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +35,10 @@ public class SecActivity extends AppCompatActivity {
 
         MyApplication.getObjectComponent().dObjectComponent().create().inject(this);
 
-        Log.d(TAG, "onCreate: " + "mSingletonObject3 : " + mSingletonObject3.hashCode()
-                + ", mDObject : " + mDObject.hashCode());
+        Log.d(TAG, "onCreate: "
+                + "mSingletonObject3 : " + mSingletonObject3.hashCode()
+                + ", mDObject : " + mDObject.hashCode()
+                + ", mAInterface : " + mAInterface.getString());
+
     }
 }

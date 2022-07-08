@@ -6,7 +6,9 @@ import com.caic.dagger2demo.MainActivity;
 import com.caic.dagger2demo.SecActivity;
 import com.caic.dagger2demo.module.DComponentModule;
 import com.caic.dagger2demo.module.DObjectModule;
+import com.caic.dagger2demo.module.InterfaceModule;
 import com.caic.dagger2demo.module.ObjectModule;
+import com.caic.dagger2demo.object.AInterface;
 import com.caic.dagger2demo.object.AObject;
 import com.caic.dagger2demo.object.SingletonObject;
 import com.caic.dagger2demo.scope.MyScope;
@@ -20,7 +22,7 @@ import dagger.Component;
  * Component用于注入对象，装载Module
  */
 @Singleton
-@Component(modules = {ObjectModule.class, DComponentModule.class})
+@Component(modules = {ObjectModule.class, DComponentModule.class, InterfaceModule.class})
 public interface ObjectComponent {
 
     //void inject(MainActivity mainActivity);
