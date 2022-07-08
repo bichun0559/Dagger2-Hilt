@@ -5,11 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.bccc.dagger2demo.component.DaggerCObjectComponent;
 import com.bccc.dagger2demo.object.AInterface;
 import com.bccc.dagger2demo.object.DObject;
+import com.bccc.dagger2demo.object.EObject;
 import com.bccc.dagger2demo.object.SingletonObject;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 public class SecActivity extends AppCompatActivity {
     private static final String TAG = "SecActivity";
@@ -24,6 +27,16 @@ public class SecActivity extends AppCompatActivity {
     @Inject
     AInterface mAInterface;
 
+    /**{@link com.bccc.dagger2demo.module.EObjectModule}**/
+    @Named("WithoutName")
+    @Inject
+    EObject mEObject1;
+
+    /**{@link com.bccc.dagger2demo.module.EObjectModule}**/
+    @Named("WithName")
+    @Inject
+    EObject mEObject2;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +50,9 @@ public class SecActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: "
                 + "mSingletonObject3 : " + mSingletonObject3.hashCode()
                 + ", mDObject : " + mDObject.hashCode()
-                + ", mAInterface : " + mAInterface.getString());
+                + ", mAInterface : " + mAInterface.getString()
+                + ", mEObject1 : " + mEObject1.getName()
+                + ", mEObject2 : " + mEObject2.getName());
 
     }
 }
